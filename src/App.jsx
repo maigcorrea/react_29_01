@@ -1,8 +1,10 @@
+import { useState } from "react"
 import Botton from "./components/Botton"
 import Card from "./components/Card"
 import Cards from "./components/Card"
 import Contacto from "./components/Contacto"
 import Home from "./components/Home"
+import Hijo from "./components/Hijo"
 
 
 function App() {
@@ -41,6 +43,50 @@ function App() {
       content:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minima perferendis voluptatem, voluptatum, quis optio cumque saepe veniam ducimus deleniti qui quos iusto quam hic provident? Reiciendis eius quas consequatur?",
     }
 ]
+
+//Para manejar las variables no se puede hacer con let, se utilizan las variables reactivas
+// let contador=0;
+
+//VARIABLES REACTIVAS CON EL HOOK useState
+// useState()=[contador, setContador];
+let [contador, setContador]=useState(0);
+
+
+
+//Cunado detecta un cambio, react lo detecta y vuelve a rederizar ese componente
+// function inc(){
+//   setContador(contador + 1)
+// }
+
+// function dinc(){
+//   setContador(contador - 1)
+// }
+
+function cambiar(signo){
+  if(signo==="+"){
+    setContador(contador + 1);
+  }
+  
+  if(signo==="-"){
+    setContador(contador - 1);
+  }
+
+}
+
+let [estilo1,setColor]=useState({backgroundColor:"white", color:"black"})
+
+
+
+function cambiarColor(color){
+  if(color==="white"){
+    setColor({backgroundColor:"black"});
+  }else{
+    setColor({backgroundColor:"white"});
+  }
+  
+
+
+}
   return (
     <>
       {/* <h1>Cabecera h1</h1>
@@ -81,12 +127,31 @@ function App() {
        <Botton titulo="Ver"></Botton> 
        <Botton></Botton> */}
 
-       {
+       {/* {
         datos.map(dato => {
           return <Card key={dato.id} titulo={dato.titulo} img={dato.img} content={dato.content}></Card>
         })
-       }
-       
+       } */}
+
+      
+      {/* <h2>{contador}</h2> */}
+      {/* Para pasar por parámetro un elemento, hay que hacer una función anónima */}
+      {/* <button onClick={() => cambiar("+")}>+</button>
+      <button onClick={() =>cambiar("-")}>-</button> */}
+
+      {/* <div>
+        <button onClick={() => cambiarColor("blue")}>Azul</button>
+        <button onClick={() => cambiarColor("red")}>Rojo</button>
+
+        <Hijo col={estilo1}></Hijo>
+        
+      </div> */}
+
+
+      <button style={estilo1} onClick={() => cambiarColor("white")}>Tema</button>
+
+      
+      
 
     </>
   )
