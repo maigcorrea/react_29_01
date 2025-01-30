@@ -1,0 +1,14 @@
+/* Tener un css para cada componente y luego un css global */
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: auto;
+    border: solid 1px black;
+}
+
+.card{
+    border: solid 1px red;
+}
